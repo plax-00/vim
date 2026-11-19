@@ -1,4 +1,4 @@
-*options.txt*	For Vim version 9.2.  Last change: 2026 May 03
+*options.txt*	For Vim version 9.2.  Last change: 2026 Nov 15
 
 
 		  VIM REFERENCE MANUAL	  by Bram Moolenaar
@@ -7597,10 +7597,14 @@ A jump table for the options with a short description can be found at |Q_op|.
 						*'scrolloffpad'* *'sop'*
 'scrolloffpad' 'sop'	number	(default 0)
 			global or local to window |global-local|
-	When 'scrolloff' and 'scrolloffpad' are greater than zero, allow
-	the cursor to remain centered when at the end of the file.
-	Normally, 'scrolloff' will not keep the cursor centered at the
-	end of the file.
+	When 'scrolloff' and 'scrolloffpad' are greater than zero, allow blank
+	screen rows below the end of the file to supply missing context
+	requested by 'scrolloff'. This creates a "padding" at EOF that matches
+	the number of lines requested by 'scrolloff'.
+
+	When the requested context fills or exceeds the space available around
+	the cursor line, place it approximately in the middle of the window,
+	using the same midpoint convention as |zz|.
 
 	A value of 0 disables this feature.  Any value above 0 enables it.
 	For a window-local value, -1 means to use the global value.
